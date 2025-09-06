@@ -2,21 +2,15 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Compile') {
             steps {
-                bat 'echo Building the application'
+                bat 'javac -d out src/main/java/com/example/JenkinsPipelineDemo.java'
             }
         }
-        
-        stage('Testing') {
+
+        stage('Run') {
             steps {
-                bat 'echo Testing the application'
-            }
-        }
-        
-        stage('Deploy') {
-            steps {
-                bat 'echo Deploying the application'
+                bat 'java -cp out com.example.JenkinsPipelineDemo'
             }
         }
     }
