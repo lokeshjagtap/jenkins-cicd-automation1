@@ -4,13 +4,15 @@ pipeline {
     stages {
         stage('Compile') {
             steps {
-                bat 'javac -d out src/main/java/com/example/JenkinsPipelineDemo.java'
+                // Compile the Java file without specifying an output folder
+                bat 'javac src\\com\\example\\JenkinsPipelineDemo.java'
             }
         }
 
         stage('Run') {
             steps {
-                bat 'java -cp out com.example.JenkinsPipelineDemo'
+                // Run the compiled class using the package name
+                bat 'java -cp src com.example.JenkinsPipelineDemo'
             }
         }
     }
